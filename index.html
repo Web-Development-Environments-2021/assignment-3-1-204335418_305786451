@@ -1,0 +1,1943 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Superliga Management</title>
+    <style type="text/css">
+      body {
+      	font-family: Trebuchet MS, sans-serif;
+      	font-size: 15px;
+      	color: #444;
+      	margin-right: 24px;
+      }
+      
+      h1	{
+      	font-size: 25px;
+      }
+      h2	{
+      	font-size: 20px;
+      }
+      h3	{
+      	font-size: 16px;
+      	font-weight: bold;
+      }
+      hr	{
+      	height: 1px;
+      	border: 0;
+      	color: #ddd;
+      	background-color: #ddd;
+      }
+      
+      .app-desc {
+        clear: both;
+        margin-left: 20px;
+      }
+      .param-name {
+        width: 100%;
+      }
+      .license-info {
+        margin-left: 20px;
+      }
+      
+      .license-url {
+        margin-left: 20px;
+      }
+      
+      .model {
+        margin: 0 0 0px 20px;
+      }
+      
+      .method {
+        margin-left: 20px;
+      }
+      
+      .method-notes	{
+      	margin: 10px 0 20px 0;
+      	font-size: 90%;
+      	color: #555;
+      }
+      
+      pre {
+        padding: 10px;
+        margin-bottom: 2px;
+      }
+      
+      .http-method {
+       text-transform: uppercase;
+      }
+      
+      pre.get {
+        background-color: #0f6ab4;
+      }
+      
+      pre.post {
+        background-color: #10a54a;
+      }
+      
+      pre.put {
+        background-color: #c5862b;
+      }
+      
+      pre.delete {
+        background-color: #a41e22;
+      }
+      
+      .huge	{
+      	color: #fff;
+      }
+      
+      pre.example {
+        background-color: #f3f3f3;
+        padding: 10px;
+        border: 1px solid #ddd;
+      }
+      
+      code {
+        white-space: pre;
+      }
+      
+      .nickname {
+        font-weight: bold;
+      }
+      
+      .method-path {
+        font-size: 1.5em;
+        background-color: #0f6ab4;
+      }
+      
+      .up {
+        float:right;
+      }
+      
+      .parameter {
+        width: 500px;
+      }
+      
+      .param {
+        width: 500px;
+        padding: 10px 0 0 20px;
+        font-weight: bold;
+      }
+      
+      .param-desc {
+        width: 700px;
+        padding: 0 0 0 20px;
+        color: #777;
+      }
+      
+      .param-type {
+        font-style: italic;
+      }
+      
+      .param-enum-header {
+      width: 700px;
+      padding: 0 0 0 60px;
+      color: #777;
+      font-weight: bold;
+      }
+      
+      .param-enum {
+      width: 700px;
+      padding: 0 0 0 80px;
+      color: #777;
+      font-style: italic;
+      }
+      
+      .field-label {
+        padding: 0;
+        margin: 0;
+        clear: both;
+      }
+      
+      .field-items	{
+      	padding: 0 0 15px 0;
+      	margin-bottom: 15px;
+      }
+      
+      .return-type {
+        clear: both;
+        padding-bottom: 10px;
+      }
+      
+      .param-header {
+        font-weight: bold;
+      }
+      
+      .method-tags {
+        text-align: right;
+      }
+      
+      .method-tag {
+        background: none repeat scroll 0% 0% #24A600;
+        border-radius: 3px;
+        padding: 2px 10px;
+        margin: 2px;
+        color: #FFF;
+        display: inline-block;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+  <h1>Superliga Management</h1>
+    <div class="app-desc">An API to recieve data about SUPERLIGA 2020/2021 season.</div>
+    <div class="app-desc">More information: <a href="https://helloreverb.com">https://helloreverb.com</a></div>
+    <div class="app-desc">Contact Info: <a href="hello@helloreverb.com">hello@helloreverb.com</a></div>
+    <div class="app-desc">Version: 1.0.0</div>
+    <div class="app-desc">BasePath:/WebProj/League_Management_API/1.0.0</div>
+    <div class="license-info">All rights reserved</div>
+    <div class="license-url">http://apache.org/licenses/LICENSE-2.0.html</div>
+  <h2>Access</h2>
+
+  <h2><a name="__Methods">Methods</a></h2>
+  [ Jump to <a href="#__Models">Models</a> ]
+
+  <h3>Table of Contents </h3>
+  <div class="method-summary"></div>
+  <h4><a href="#Coach">Coach</a></h4>
+  <ul>
+  <li><a href="#findCoachByName"><code><span class="http-method">get</span> /coaches/findByName</code></a></li>
+  <li><a href="#getCoach"><code><span class="http-method">get</span> /coaches</code></a></li>
+  <li><a href="#getCoachById"><code><span class="http-method">get</span> /coaches/{coachId}</code></a></li>
+  </ul>
+  <h4><a href="#League">League</a></h4>
+  <ul>
+  <li><a href="#getLeague"><code><span class="http-method">get</span> /league</code></a></li>
+  </ul>
+  <h4><a href="#Match">Match</a></h4>
+  <ul>
+  <li><a href="#addEvent"><code><span class="http-method">put</span> /matches/addEvent</code></a></li>
+  <li><a href="#getMatch"><code><span class="http-method">get</span> /matches</code></a></li>
+  <li><a href="#getMatchById"><code><span class="http-method">get</span> /matches/{matchId}</code></a></li>
+  <li><a href="#updateScores"><code><span class="http-method">put</span> /matches/updateScores</code></a></li>
+  </ul>
+  <h4><a href="#Player">Player</a></h4>
+  <ul>
+  <li><a href="#findPlayerByName"><code><span class="http-method">get</span> /players/findByName</code></a></li>
+  <li><a href="#getPlayer"><code><span class="http-method">get</span> /players</code></a></li>
+  <li><a href="#getPlayerById"><code><span class="http-method">get</span> /players/{playerId}</code></a></li>
+  </ul>
+  <h4><a href="#Team">Team</a></h4>
+  <ul>
+  <li><a href="#findTeamByName"><code><span class="http-method">get</span> /teams/findByName</code></a></li>
+  <li><a href="#getTeam"><code><span class="http-method">get</span> /teams</code></a></li>
+  <li><a href="#getTeamById"><code><span class="http-method">get</span> /teams/{teamId}</code></a></li>
+  </ul>
+  <h4><a href="#User">User</a></h4>
+  <ul>
+  <li><a href="#addFavourite"><code><span class="http-method">put</span> /users/addFavourite</code></a></li>
+  <li><a href="#createUser"><code><span class="http-method">post</span> /users</code></a></li>
+  <li><a href="#loginUser"><code><span class="http-method">get</span> /users/login</code></a></li>
+  <li><a href="#logoutUser"><code><span class="http-method">get</span> /users/logout</code></a></li>
+  <li><a href="#updateUser"><code><span class="http-method">put</span> /users</code></a></li>
+  </ul>
+
+  <h1><a name="Coach">Coach</a></h1>
+  <div class="method"><a name="findCoachByName"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /coaches/findByName</code></pre></div>
+    <div class="method-summary">Finds coachs by name (<span class="nickname">findCoachByName</span>)</div>
+    <div class="method-notes">Recieve coaches by full or partial name queries</div>
+
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">name (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; name to be searched </div>      <div class="param">amountLimit (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; The amount of teams to be returned in the current request </div>      <div class="param">offset (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; The pagination marker. Offset to begin current respone from </div>    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#Coach">Coach</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "birthcountry" : "Greece",
+  "birthdate" : "05/12/91",
+  "nationality" : "Scotland",
+  "image_path" : "image_path",
+  "name" : "Ronaldo",
+  "weight" : "80 kg",
+  "id" : 0,
+  "team_id" : 6,
+  "common_name" : "C. Ronaldo",
+  "height" : "170 cm"
+}, {
+  "birthcountry" : "Greece",
+  "birthdate" : "05/12/91",
+  "nationality" : "Scotland",
+  "image_path" : "image_path",
+  "name" : "Ronaldo",
+  "weight" : "80 kg",
+  "id" : 0,
+  "team_id" : 6,
+  "common_name" : "C. Ronaldo",
+  "height" : "170 cm"
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    successful operation
+        
+    <h4 class="field-label">500</h4>
+    Internal server error
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getCoach"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /coaches</code></pre></div>
+    <div class="method-summary">Get all coachs information (<span class="nickname">getCoach</span>)</div>
+    <div class="method-notes"></div>
+
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">amountLimit (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; The amount of teams to be returned in the current request </div>      <div class="param">offset (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; The pagination marker. Offset to begin current respone from </div>    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#Coach">Coach</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "birthcountry" : "Greece",
+  "birthdate" : "05/12/91",
+  "nationality" : "Scotland",
+  "image_path" : "image_path",
+  "name" : "Ronaldo",
+  "weight" : "80 kg",
+  "id" : 0,
+  "team_id" : 6,
+  "common_name" : "C. Ronaldo",
+  "height" : "170 cm"
+}, {
+  "birthcountry" : "Greece",
+  "birthdate" : "05/12/91",
+  "nationality" : "Scotland",
+  "image_path" : "image_path",
+  "name" : "Ronaldo",
+  "weight" : "80 kg",
+  "id" : 0,
+  "team_id" : 6,
+  "common_name" : "C. Ronaldo",
+  "height" : "170 cm"
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    successful operation
+        
+    <h4 class="field-label">400</h4>
+    Invalid parameter value
+        <a href="#"></a>
+    <h4 class="field-label">500</h4>
+    Internal server error
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getCoachById"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /coaches/{coachId}</code></pre></div>
+    <div class="method-summary">Find a coach by ID (<span class="nickname">getCoachById</span>)</div>
+    <div class="method-notes">Returns a single coach</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">coachId (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of coach to return format: int64</div>    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#Coach">Coach</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "birthcountry" : "Greece",
+  "birthdate" : "05/12/91",
+  "nationality" : "Scotland",
+  "image_path" : "image_path",
+  "name" : "Ronaldo",
+  "weight" : "80 kg",
+  "id" : 0,
+  "team_id" : 6,
+  "common_name" : "C. Ronaldo",
+  "height" : "170 cm"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    successful operation
+        <a href="#Coach">Coach</a>
+    <h4 class="field-label">400</h4>
+    Invalid ID supplied
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Coach not found
+        <a href="#"></a>
+    <h4 class="field-label">500</h4>
+    Internal server error
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="League">League</a></h1>
+  <div class="method"><a name="getLeague"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /league</code></pre></div>
+    <div class="method-summary">Get league information (<span class="nickname">getLeague</span>)</div>
+    <div class="method-notes"></div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#League">League</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "current_round_id" : 5,
+  "logo_path" : "logo_path",
+  "name" : "name",
+  "current_season_id" : 1,
+  "type" : "type",
+  "current_stage_id" : 5,
+  "league_id" : 0,
+  "country_id" : 6
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    successful operation
+        <a href="#League">League</a>
+    <h4 class="field-label">500</h4>
+    Internal server error
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="Match">Match</a></h1>
+  <div class="method"><a name="addEvent"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="put"><code class="huge"><span class="http-method">put</span> /matches/addEvent</code></pre></div>
+    <div class="method-summary">Add an event to an existing match (<span class="nickname">addEvent</span>)</div>
+    <div class="method-notes"></div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#Event">Event</a> (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Created event object </div>
+                </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">match_id (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; match to add the event item to format: int64</div>    </div>  <!-- field-items -->
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    successful operation
+        <a href="#"></a>
+    <h4 class="field-label">400</h4>
+    Invalid ID supplied
+        <a href="#"></a>
+    <h4 class="field-label">403</h4>
+    Forbidden operation
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Items not found
+        <a href="#"></a>
+    <h4 class="field-label">500</h4>
+    Internal server error
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getMatch"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /matches</code></pre></div>
+    <div class="method-summary">Get all matches information (<span class="nickname">getMatch</span>)</div>
+    <div class="method-notes"></div>
+
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">amountLimit (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; The amount of matches to be returned in the current request </div>      <div class="param">offset (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; The pagination marker. Offset to begin current respone from </div>    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#Match">Match</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "datetime" : "datetime",
+  "home_team_id" : 1,
+  "home_goals" : 2,
+  "match_id" : 6,
+  "away_team_id" : 5,
+  "away_goals" : 7,
+  "venue_id" : 5,
+  "events" : [ {
+    "datetime" : "datetime",
+    "player_id" : 3,
+    "details" : "goal",
+    "team_id" : 2,
+    "game_minute" : 9
+  }, {
+    "datetime" : "datetime",
+    "player_id" : 3,
+    "details" : "goal",
+    "team_id" : 2,
+    "game_minute" : 9
+  } ]
+}, {
+  "datetime" : "datetime",
+  "home_team_id" : 1,
+  "home_goals" : 2,
+  "match_id" : 6,
+  "away_team_id" : 5,
+  "away_goals" : 7,
+  "venue_id" : 5,
+  "events" : [ {
+    "datetime" : "datetime",
+    "player_id" : 3,
+    "details" : "goal",
+    "team_id" : 2,
+    "game_minute" : 9
+  }, {
+    "datetime" : "datetime",
+    "player_id" : 3,
+    "details" : "goal",
+    "team_id" : 2,
+    "game_minute" : 9
+  } ]
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    successful operation
+        
+    <h4 class="field-label">400</h4>
+    Invalid parameter value
+        <a href="#"></a>
+    <h4 class="field-label">500</h4>
+    Internal server error
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getMatchById"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /matches/{matchId}</code></pre></div>
+    <div class="method-summary">Find a match by ID (<span class="nickname">getMatchById</span>)</div>
+    <div class="method-notes">Returns a single match</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">matchId (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of match to return format: int64</div>    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#Match">Match</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "datetime" : "datetime",
+  "home_team_id" : 1,
+  "home_goals" : 2,
+  "match_id" : 6,
+  "away_team_id" : 5,
+  "away_goals" : 7,
+  "venue_id" : 5,
+  "events" : [ {
+    "datetime" : "datetime",
+    "player_id" : 3,
+    "details" : "goal",
+    "team_id" : 2,
+    "game_minute" : 9
+  }, {
+    "datetime" : "datetime",
+    "player_id" : 3,
+    "details" : "goal",
+    "team_id" : 2,
+    "game_minute" : 9
+  } ]
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    successful operation
+        <a href="#Match">Match</a>
+    <h4 class="field-label">400</h4>
+    Invalid ID supplied
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Coach not found
+        <a href="#"></a>
+    <h4 class="field-label">500</h4>
+    Internal server error
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="updateScores"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="put"><code class="huge"><span class="http-method">put</span> /matches/updateScores</code></pre></div>
+    <div class="method-summary">Update matches scores to an existing match (<span class="nickname">updateScores</span>)</div>
+    <div class="method-notes"></div>
+
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">match_id (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; match to update format: int64</div>      <div class="param">home_goals (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash;  format: int64</div>      <div class="param">away_goals (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash;  format: int64</div>    </div>  <!-- field-items -->
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    successful operation
+        <a href="#"></a>
+    <h4 class="field-label">400</h4>
+    Invalid ID supplied
+        <a href="#"></a>
+    <h4 class="field-label">403</h4>
+    Forbidden operation
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Match not found
+        <a href="#"></a>
+    <h4 class="field-label">500</h4>
+    Internal server error
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="Player">Player</a></h1>
+  <div class="method"><a name="findPlayerByName"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /players/findByName</code></pre></div>
+    <div class="method-summary">Finds players by name (<span class="nickname">findPlayerByName</span>)</div>
+    <div class="method-notes">Recieve players by full or partial name queries</div>
+
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">name (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; name to be searched </div>      <div class="param">amountLimit (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; The amount of teams to be returned in the current request </div>      <div class="param">offset (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; The pagination marker. Offset to begin current respone from </div>    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#Player">Player</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "birthcountry" : "Greece",
+  "birthdate" : "05/12/91",
+  "nationality" : "Scotland",
+  "image_path" : "image_path",
+  "name" : "Ronaldo",
+  "weight" : "80 kg",
+  "id" : 0,
+  "team_id" : 6,
+  "position" : 1,
+  "common_name" : "C. Ronaldo",
+  "height" : "170 cm"
+}, {
+  "birthcountry" : "Greece",
+  "birthdate" : "05/12/91",
+  "nationality" : "Scotland",
+  "image_path" : "image_path",
+  "name" : "Ronaldo",
+  "weight" : "80 kg",
+  "id" : 0,
+  "team_id" : 6,
+  "position" : 1,
+  "common_name" : "C. Ronaldo",
+  "height" : "170 cm"
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    successful operation
+        
+    <h4 class="field-label">500</h4>
+    Internal server error
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getPlayer"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /players</code></pre></div>
+    <div class="method-summary">Get all players information (<span class="nickname">getPlayer</span>)</div>
+    <div class="method-notes"></div>
+
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">amountLimit (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; The amount of teams to be returned in the current request </div>      <div class="param">offset (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; The pagination marker. Offset to begin current respone from </div>    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#Player">Player</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "birthcountry" : "Greece",
+  "birthdate" : "05/12/91",
+  "nationality" : "Scotland",
+  "image_path" : "image_path",
+  "name" : "Ronaldo",
+  "weight" : "80 kg",
+  "id" : 0,
+  "team_id" : 6,
+  "position" : 1,
+  "common_name" : "C. Ronaldo",
+  "height" : "170 cm"
+}, {
+  "birthcountry" : "Greece",
+  "birthdate" : "05/12/91",
+  "nationality" : "Scotland",
+  "image_path" : "image_path",
+  "name" : "Ronaldo",
+  "weight" : "80 kg",
+  "id" : 0,
+  "team_id" : 6,
+  "position" : 1,
+  "common_name" : "C. Ronaldo",
+  "height" : "170 cm"
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    successful operation
+        
+    <h4 class="field-label">400</h4>
+    Invalid parameter value
+        <a href="#"></a>
+    <h4 class="field-label">500</h4>
+    Internal server error
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getPlayerById"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /players/{playerId}</code></pre></div>
+    <div class="method-summary">Find a player by ID (<span class="nickname">getPlayerById</span>)</div>
+    <div class="method-notes">Returns a single player</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">playerId (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of player to return format: int64</div>    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#Player">Player</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "birthcountry" : "Greece",
+  "birthdate" : "05/12/91",
+  "nationality" : "Scotland",
+  "image_path" : "image_path",
+  "name" : "Ronaldo",
+  "weight" : "80 kg",
+  "id" : 0,
+  "team_id" : 6,
+  "position" : 1,
+  "common_name" : "C. Ronaldo",
+  "height" : "170 cm"
+}, {
+  "birthcountry" : "Greece",
+  "birthdate" : "05/12/91",
+  "nationality" : "Scotland",
+  "image_path" : "image_path",
+  "name" : "Ronaldo",
+  "weight" : "80 kg",
+  "id" : 0,
+  "team_id" : 6,
+  "position" : 1,
+  "common_name" : "C. Ronaldo",
+  "height" : "170 cm"
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    successful operation
+        
+    <h4 class="field-label">400</h4>
+    Invalid ID supplied
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Player not found
+        <a href="#"></a>
+    <h4 class="field-label">500</h4>
+    Internal server error
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="Team">Team</a></h1>
+  <div class="method"><a name="findTeamByName"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /teams/findByName</code></pre></div>
+    <div class="method-summary">Finds teams by name (<span class="nickname">findTeamByName</span>)</div>
+    <div class="method-notes">Recieve teams by full or partial name queries</div>
+
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">name (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; name to be searched </div>      <div class="param">amountLimit (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; The amount of teams to be returned in the current request </div>      <div class="param">offset (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; The pagination marker. Offset to begin current respone from </div>    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#Team">Team</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "logo_path" : "logo_path",
+  "players" : [ {
+    "birthcountry" : "Greece",
+    "birthdate" : "05/12/91",
+    "nationality" : "Scotland",
+    "image_path" : "image_path",
+    "name" : "Ronaldo",
+    "weight" : "80 kg",
+    "id" : 0,
+    "team_id" : 6,
+    "position" : 1,
+    "common_name" : "C. Ronaldo",
+    "height" : "170 cm"
+  }, {
+    "birthcountry" : "Greece",
+    "birthdate" : "05/12/91",
+    "nationality" : "Scotland",
+    "image_path" : "image_path",
+    "name" : "Ronaldo",
+    "weight" : "80 kg",
+    "id" : 0,
+    "team_id" : 6,
+    "position" : 1,
+    "common_name" : "C. Ronaldo",
+    "height" : "170 cm"
+  } ],
+  "team_id" : 0,
+  "coach" : [ {
+    "birthcountry" : "Greece",
+    "birthdate" : "05/12/91",
+    "nationality" : "Scotland",
+    "image_path" : "image_path",
+    "name" : "Ronaldo",
+    "weight" : "80 kg",
+    "id" : 0,
+    "team_id" : 6,
+    "common_name" : "C. Ronaldo",
+    "height" : "170 cm"
+  }, {
+    "birthcountry" : "Greece",
+    "birthdate" : "05/12/91",
+    "nationality" : "Scotland",
+    "image_path" : "image_path",
+    "name" : "Ronaldo",
+    "weight" : "80 kg",
+    "id" : 0,
+    "team_id" : 6,
+    "common_name" : "C. Ronaldo",
+    "height" : "170 cm"
+  } ],
+  "matches" : [ {
+    "datetime" : "datetime",
+    "home_team_id" : 1,
+    "home_goals" : 2,
+    "match_id" : 6,
+    "away_team_id" : 5,
+    "away_goals" : 7,
+    "venue_id" : 5,
+    "events" : [ {
+      "datetime" : "datetime",
+      "player_id" : 3,
+      "details" : "goal",
+      "team_id" : 2,
+      "game_minute" : 9
+    }, {
+      "datetime" : "datetime",
+      "player_id" : 3,
+      "details" : "goal",
+      "team_id" : 2,
+      "game_minute" : 9
+    } ]
+  }, {
+    "datetime" : "datetime",
+    "home_team_id" : 1,
+    "home_goals" : 2,
+    "match_id" : 6,
+    "away_team_id" : 5,
+    "away_goals" : 7,
+    "venue_id" : 5,
+    "events" : [ {
+      "datetime" : "datetime",
+      "player_id" : 3,
+      "details" : "goal",
+      "team_id" : 2,
+      "game_minute" : 9
+    }, {
+      "datetime" : "datetime",
+      "player_id" : 3,
+      "details" : "goal",
+      "team_id" : 2,
+      "game_minute" : 9
+    } ]
+  } ]
+}, {
+  "logo_path" : "logo_path",
+  "players" : [ {
+    "birthcountry" : "Greece",
+    "birthdate" : "05/12/91",
+    "nationality" : "Scotland",
+    "image_path" : "image_path",
+    "name" : "Ronaldo",
+    "weight" : "80 kg",
+    "id" : 0,
+    "team_id" : 6,
+    "position" : 1,
+    "common_name" : "C. Ronaldo",
+    "height" : "170 cm"
+  }, {
+    "birthcountry" : "Greece",
+    "birthdate" : "05/12/91",
+    "nationality" : "Scotland",
+    "image_path" : "image_path",
+    "name" : "Ronaldo",
+    "weight" : "80 kg",
+    "id" : 0,
+    "team_id" : 6,
+    "position" : 1,
+    "common_name" : "C. Ronaldo",
+    "height" : "170 cm"
+  } ],
+  "team_id" : 0,
+  "coach" : [ {
+    "birthcountry" : "Greece",
+    "birthdate" : "05/12/91",
+    "nationality" : "Scotland",
+    "image_path" : "image_path",
+    "name" : "Ronaldo",
+    "weight" : "80 kg",
+    "id" : 0,
+    "team_id" : 6,
+    "common_name" : "C. Ronaldo",
+    "height" : "170 cm"
+  }, {
+    "birthcountry" : "Greece",
+    "birthdate" : "05/12/91",
+    "nationality" : "Scotland",
+    "image_path" : "image_path",
+    "name" : "Ronaldo",
+    "weight" : "80 kg",
+    "id" : 0,
+    "team_id" : 6,
+    "common_name" : "C. Ronaldo",
+    "height" : "170 cm"
+  } ],
+  "matches" : [ {
+    "datetime" : "datetime",
+    "home_team_id" : 1,
+    "home_goals" : 2,
+    "match_id" : 6,
+    "away_team_id" : 5,
+    "away_goals" : 7,
+    "venue_id" : 5,
+    "events" : [ {
+      "datetime" : "datetime",
+      "player_id" : 3,
+      "details" : "goal",
+      "team_id" : 2,
+      "game_minute" : 9
+    }, {
+      "datetime" : "datetime",
+      "player_id" : 3,
+      "details" : "goal",
+      "team_id" : 2,
+      "game_minute" : 9
+    } ]
+  }, {
+    "datetime" : "datetime",
+    "home_team_id" : 1,
+    "home_goals" : 2,
+    "match_id" : 6,
+    "away_team_id" : 5,
+    "away_goals" : 7,
+    "venue_id" : 5,
+    "events" : [ {
+      "datetime" : "datetime",
+      "player_id" : 3,
+      "details" : "goal",
+      "team_id" : 2,
+      "game_minute" : 9
+    }, {
+      "datetime" : "datetime",
+      "player_id" : 3,
+      "details" : "goal",
+      "team_id" : 2,
+      "game_minute" : 9
+    } ]
+  } ]
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    successful operation
+        
+    <h4 class="field-label">500</h4>
+    Internal server error
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getTeam"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /teams</code></pre></div>
+    <div class="method-summary">Get all teams information (<span class="nickname">getTeam</span>)</div>
+    <div class="method-notes"></div>
+
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">amountLimit (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; The amount of teams to be returned in the current request </div>      <div class="param">offset (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; The pagination marker. Offset to begin current respone from </div>    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#Team">Team</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "logo_path" : "logo_path",
+  "players" : [ {
+    "birthcountry" : "Greece",
+    "birthdate" : "05/12/91",
+    "nationality" : "Scotland",
+    "image_path" : "image_path",
+    "name" : "Ronaldo",
+    "weight" : "80 kg",
+    "id" : 0,
+    "team_id" : 6,
+    "position" : 1,
+    "common_name" : "C. Ronaldo",
+    "height" : "170 cm"
+  }, {
+    "birthcountry" : "Greece",
+    "birthdate" : "05/12/91",
+    "nationality" : "Scotland",
+    "image_path" : "image_path",
+    "name" : "Ronaldo",
+    "weight" : "80 kg",
+    "id" : 0,
+    "team_id" : 6,
+    "position" : 1,
+    "common_name" : "C. Ronaldo",
+    "height" : "170 cm"
+  } ],
+  "team_id" : 0,
+  "coach" : [ {
+    "birthcountry" : "Greece",
+    "birthdate" : "05/12/91",
+    "nationality" : "Scotland",
+    "image_path" : "image_path",
+    "name" : "Ronaldo",
+    "weight" : "80 kg",
+    "id" : 0,
+    "team_id" : 6,
+    "common_name" : "C. Ronaldo",
+    "height" : "170 cm"
+  }, {
+    "birthcountry" : "Greece",
+    "birthdate" : "05/12/91",
+    "nationality" : "Scotland",
+    "image_path" : "image_path",
+    "name" : "Ronaldo",
+    "weight" : "80 kg",
+    "id" : 0,
+    "team_id" : 6,
+    "common_name" : "C. Ronaldo",
+    "height" : "170 cm"
+  } ],
+  "matches" : [ {
+    "datetime" : "datetime",
+    "home_team_id" : 1,
+    "home_goals" : 2,
+    "match_id" : 6,
+    "away_team_id" : 5,
+    "away_goals" : 7,
+    "venue_id" : 5,
+    "events" : [ {
+      "datetime" : "datetime",
+      "player_id" : 3,
+      "details" : "goal",
+      "team_id" : 2,
+      "game_minute" : 9
+    }, {
+      "datetime" : "datetime",
+      "player_id" : 3,
+      "details" : "goal",
+      "team_id" : 2,
+      "game_minute" : 9
+    } ]
+  }, {
+    "datetime" : "datetime",
+    "home_team_id" : 1,
+    "home_goals" : 2,
+    "match_id" : 6,
+    "away_team_id" : 5,
+    "away_goals" : 7,
+    "venue_id" : 5,
+    "events" : [ {
+      "datetime" : "datetime",
+      "player_id" : 3,
+      "details" : "goal",
+      "team_id" : 2,
+      "game_minute" : 9
+    }, {
+      "datetime" : "datetime",
+      "player_id" : 3,
+      "details" : "goal",
+      "team_id" : 2,
+      "game_minute" : 9
+    } ]
+  } ]
+}, {
+  "logo_path" : "logo_path",
+  "players" : [ {
+    "birthcountry" : "Greece",
+    "birthdate" : "05/12/91",
+    "nationality" : "Scotland",
+    "image_path" : "image_path",
+    "name" : "Ronaldo",
+    "weight" : "80 kg",
+    "id" : 0,
+    "team_id" : 6,
+    "position" : 1,
+    "common_name" : "C. Ronaldo",
+    "height" : "170 cm"
+  }, {
+    "birthcountry" : "Greece",
+    "birthdate" : "05/12/91",
+    "nationality" : "Scotland",
+    "image_path" : "image_path",
+    "name" : "Ronaldo",
+    "weight" : "80 kg",
+    "id" : 0,
+    "team_id" : 6,
+    "position" : 1,
+    "common_name" : "C. Ronaldo",
+    "height" : "170 cm"
+  } ],
+  "team_id" : 0,
+  "coach" : [ {
+    "birthcountry" : "Greece",
+    "birthdate" : "05/12/91",
+    "nationality" : "Scotland",
+    "image_path" : "image_path",
+    "name" : "Ronaldo",
+    "weight" : "80 kg",
+    "id" : 0,
+    "team_id" : 6,
+    "common_name" : "C. Ronaldo",
+    "height" : "170 cm"
+  }, {
+    "birthcountry" : "Greece",
+    "birthdate" : "05/12/91",
+    "nationality" : "Scotland",
+    "image_path" : "image_path",
+    "name" : "Ronaldo",
+    "weight" : "80 kg",
+    "id" : 0,
+    "team_id" : 6,
+    "common_name" : "C. Ronaldo",
+    "height" : "170 cm"
+  } ],
+  "matches" : [ {
+    "datetime" : "datetime",
+    "home_team_id" : 1,
+    "home_goals" : 2,
+    "match_id" : 6,
+    "away_team_id" : 5,
+    "away_goals" : 7,
+    "venue_id" : 5,
+    "events" : [ {
+      "datetime" : "datetime",
+      "player_id" : 3,
+      "details" : "goal",
+      "team_id" : 2,
+      "game_minute" : 9
+    }, {
+      "datetime" : "datetime",
+      "player_id" : 3,
+      "details" : "goal",
+      "team_id" : 2,
+      "game_minute" : 9
+    } ]
+  }, {
+    "datetime" : "datetime",
+    "home_team_id" : 1,
+    "home_goals" : 2,
+    "match_id" : 6,
+    "away_team_id" : 5,
+    "away_goals" : 7,
+    "venue_id" : 5,
+    "events" : [ {
+      "datetime" : "datetime",
+      "player_id" : 3,
+      "details" : "goal",
+      "team_id" : 2,
+      "game_minute" : 9
+    }, {
+      "datetime" : "datetime",
+      "player_id" : 3,
+      "details" : "goal",
+      "team_id" : 2,
+      "game_minute" : 9
+    } ]
+  } ]
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    successful operation
+        
+    <h4 class="field-label">400</h4>
+    Invalid parameter value
+        <a href="#"></a>
+    <h4 class="field-label">500</h4>
+    Internal server error
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getTeamById"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /teams/{teamId}</code></pre></div>
+    <div class="method-summary">Find a team by ID (<span class="nickname">getTeamById</span>)</div>
+    <div class="method-notes">Returns a single team</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">teamId (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of team to return format: int64</div>    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#Team">Team</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "logo_path" : "logo_path",
+  "players" : [ {
+    "birthcountry" : "Greece",
+    "birthdate" : "05/12/91",
+    "nationality" : "Scotland",
+    "image_path" : "image_path",
+    "name" : "Ronaldo",
+    "weight" : "80 kg",
+    "id" : 0,
+    "team_id" : 6,
+    "position" : 1,
+    "common_name" : "C. Ronaldo",
+    "height" : "170 cm"
+  }, {
+    "birthcountry" : "Greece",
+    "birthdate" : "05/12/91",
+    "nationality" : "Scotland",
+    "image_path" : "image_path",
+    "name" : "Ronaldo",
+    "weight" : "80 kg",
+    "id" : 0,
+    "team_id" : 6,
+    "position" : 1,
+    "common_name" : "C. Ronaldo",
+    "height" : "170 cm"
+  } ],
+  "team_id" : 0,
+  "coach" : [ {
+    "birthcountry" : "Greece",
+    "birthdate" : "05/12/91",
+    "nationality" : "Scotland",
+    "image_path" : "image_path",
+    "name" : "Ronaldo",
+    "weight" : "80 kg",
+    "id" : 0,
+    "team_id" : 6,
+    "common_name" : "C. Ronaldo",
+    "height" : "170 cm"
+  }, {
+    "birthcountry" : "Greece",
+    "birthdate" : "05/12/91",
+    "nationality" : "Scotland",
+    "image_path" : "image_path",
+    "name" : "Ronaldo",
+    "weight" : "80 kg",
+    "id" : 0,
+    "team_id" : 6,
+    "common_name" : "C. Ronaldo",
+    "height" : "170 cm"
+  } ],
+  "matches" : [ {
+    "datetime" : "datetime",
+    "home_team_id" : 1,
+    "home_goals" : 2,
+    "match_id" : 6,
+    "away_team_id" : 5,
+    "away_goals" : 7,
+    "venue_id" : 5,
+    "events" : [ {
+      "datetime" : "datetime",
+      "player_id" : 3,
+      "details" : "goal",
+      "team_id" : 2,
+      "game_minute" : 9
+    }, {
+      "datetime" : "datetime",
+      "player_id" : 3,
+      "details" : "goal",
+      "team_id" : 2,
+      "game_minute" : 9
+    } ]
+  }, {
+    "datetime" : "datetime",
+    "home_team_id" : 1,
+    "home_goals" : 2,
+    "match_id" : 6,
+    "away_team_id" : 5,
+    "away_goals" : 7,
+    "venue_id" : 5,
+    "events" : [ {
+      "datetime" : "datetime",
+      "player_id" : 3,
+      "details" : "goal",
+      "team_id" : 2,
+      "game_minute" : 9
+    }, {
+      "datetime" : "datetime",
+      "player_id" : 3,
+      "details" : "goal",
+      "team_id" : 2,
+      "game_minute" : 9
+    } ]
+  } ]
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    successful operation
+        <a href="#Team">Team</a>
+    <h4 class="field-label">400</h4>
+    Invalid ID supplied
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Team not found
+        <a href="#"></a>
+    <h4 class="field-label">500</h4>
+    Internal server error
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="User">User</a></h1>
+  <div class="method"><a name="addFavourite"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="put"><code class="huge"><span class="http-method">put</span> /users/addFavourite</code></pre></div>
+    <div class="method-summary">Add a favorite player/team/match to an existing user (<span class="nickname">addFavourite</span>)</div>
+    <div class="method-notes"></div>
+
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">user_id (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; user to add the favourite item to format: int64</div>      <div class="param">favourite_id (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; favourite item ID format: int64</div>      <div class="param">fav_type (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; what kind of favourite item </div>    </div>  <!-- field-items -->
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    successful operation
+        <a href="#"></a>
+    <h4 class="field-label">400</h4>
+    Invalid ID supplied
+        <a href="#"></a>
+    <h4 class="field-label">403</h4>
+    Forbidden operation
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Items not found
+        <a href="#"></a>
+    <h4 class="field-label">500</h4>
+    Internal server error
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="createUser"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /users</code></pre></div>
+    <div class="method-summary">Create user (<span class="nickname">createUser</span>)</div>
+    <div class="method-notes">This can only be done by the logged in user.</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#User">User</a> (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Created user object </div>
+                </div>  <!-- field-items -->
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    successful operation
+        <a href="#"></a>
+    <h4 class="field-label">500</h4>
+    Internal server error
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="loginUser"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /users/login</code></pre></div>
+    <div class="method-summary">Logs user into the system (<span class="nickname">loginUser</span>)</div>
+    <div class="method-notes"></div>
+
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">username (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; The username for login </div>      <div class="param">password (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; The password for login in clear text </div>    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      
+      String
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>""</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    successful operation
+        <a href="#String">String</a>
+    <h4 class="field-label">400</h4>
+    Invalid username/password supplied
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="logoutUser"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /users/logout</code></pre></div>
+    <div class="method-summary">Logs out current logged in user session (<span class="nickname">logoutUser</span>)</div>
+    <div class="method-notes"></div>
+
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    successful operation
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="updateUser"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="put"><code class="huge"><span class="http-method">put</span> /users</code></pre></div>
+    <div class="method-summary">Update user details (<span class="nickname">updateUser</span>)</div>
+    <div class="method-notes">This can only be done by the logged in user.</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#User">User</a> (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Updated user object </div>
+                </div>  <!-- field-items -->
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    successful operation
+        <a href="#"></a>
+    <h4 class="field-label">403</h4>
+    Forbidden operation
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    User not found
+        <a href="#"></a>
+    <h4 class="field-label">500</h4>
+    Internal server error
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+
+  <h2><a name="__Models">Models</a></h2>
+  [ Jump to <a href="#__Methods">Methods</a> ]
+
+  <h3>Table of Contents</h3>
+  <ol>
+    <li><a href="#Coach"><code>Coach</code></a></li>
+    <li><a href="#Event"><code>Event</code></a></li>
+    <li><a href="#League"><code>League</code></a></li>
+    <li><a href="#Match"><code>Match</code></a></li>
+    <li><a href="#Player"><code>Player</code></a></li>
+    <li><a href="#Team"><code>Team</code></a></li>
+    <li><a href="#User"><code>User</code></a></li>
+  </ol>
+
+  <div class="model">
+    <h3><a name="Coach"><code>Coach</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span>  format: int64</div>
+<div class="param">name </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: Ronaldo</span></div>
+<div class="param">common_name </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: C. Ronaldo</span></div>
+<div class="param">team_id </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span>  format: int64</div>
+<div class="param">image_path </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">nationality </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: Scotland</span></div>
+<div class="param">birthcountry </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: Greece</span></div>
+<div class="param">birthdate </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: 05/12/91</span></div>
+<div class="param">height </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: 170 cm</span></div>
+<div class="param">weight </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: 80 kg</span></div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="Event"><code>Event</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">datetime (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">game_minute (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span>  format: int64</div>
+<div class="param">player_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span>  format: int64</div>
+<div class="param">team_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span>  format: int64</div>
+<div class="param">details (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-enum-header">Enum:</div>
+        <div class="param-enum">goal</div><div class="param-enum">offside</div><div class="param-enum">foul</div><div class="param-enum">red_card</div><div class="param-enum">yellow_card</div><div class="param-enum">injury</div><div class="param-enum">substitution</div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="League"><code>League</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">league_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span>  format: int64</div>
+<div class="param">name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">type (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">country_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span>  format: int64</div>
+<div class="param">logo_path (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">current_season_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span>  format: int64</div>
+<div class="param">current_stage_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span>  format: int64</div>
+<div class="param">current_round_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span>  format: int64</div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="Match"><code>Match</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">match_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span>  format: int64</div>
+<div class="param">datetime (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">home_team_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span>  format: int64</div>
+<div class="param">away_team_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span>  format: int64</div>
+<div class="param">venue_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span>  format: int64</div>
+<div class="param">home_goals (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span>  format: int64</div>
+<div class="param">away_goals (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span>  format: int64</div>
+<div class="param">events (optional)</div><div class="param-desc"><span class="param-type"><a href="#Event">array[Event]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="Player"><code>Player</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span>  format: int64</div>
+<div class="param">name </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: Ronaldo</span></div>
+<div class="param">common_name </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: C. Ronaldo</span></div>
+<div class="param">team_id </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span>  format: int64</div>
+<div class="param">image_path </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">nationality </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: Scotland</span></div>
+<div class="param">birthcountry </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: Greece</span></div>
+<div class="param">birthdate </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: 05/12/91</span></div>
+<div class="param">height </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: 170 cm</span></div>
+<div class="param">weight </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: 80 kg</span></div>
+<div class="param">position </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span>  format: int64</div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="Team"><code>Team</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">team_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span>  format: int64</div>
+<div class="param">logo_path (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">players (optional)</div><div class="param-desc"><span class="param-type"><a href="#Player">array[Player]</a></span>  </div>
+<div class="param">coach (optional)</div><div class="param-desc"><span class="param-type"><a href="#Coach">array[Coach]</a></span>  </div>
+<div class="param">matches (optional)</div><div class="param-desc"><span class="param-type"><a href="#Match">array[Match]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="User"><code>User</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">user_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span>  format: int64</div>
+<div class="param">username </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">first_name </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">last_name </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">country (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">email </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">password </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">image_path </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">user_type </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> user type to set personalized UIs and permissions </div>
+        <div class="param-enum-header">Enum:</div>
+        <div class="param-enum">fan</div><div class="param-enum">player</div><div class="param-enum">coach</div><div class="param-enum">representative</div>
+<div class="param">fav_players (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">array[Long]</a></span> player IDs format: int64</div>
+<div class="param">fav_teams (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">array[Long]</a></span> player IDs format: int64</div>
+<div class="param">fav_matches (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">array[Long]</a></span> player IDs format: int64</div>
+    </div>  <!-- field-items -->
+  </div>
+  </body>
+</html>
