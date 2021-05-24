@@ -1,4 +1,4 @@
-### assignment-3-1-204335418_305786451
+### Assignment 3.1
 
 ## API URL
 https://app.swaggerhub.com/apis-docs/WebProj/League_Management_API/1.0.0
